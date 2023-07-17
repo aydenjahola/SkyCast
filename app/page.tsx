@@ -8,7 +8,29 @@ import WeatherDetails from "./components/WeatherDetails";
 
 const Home = () => {
   const apiKey = process.env.WEATHER_API_KEY!;
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    current: {
+      wind_kph: 0,
+      humidity: 0,
+      wind_dir: "",
+      pressure_mb: 0,
+      feelslike_c: 0,
+      vis_km: 0,
+      condition: {
+        icon: "",
+        text: "",
+      },
+      temp_c: 0,
+    },
+    location: {
+      name: "",
+      country: "",
+      localtime_epoch: 0,
+    },
+    forecast: {
+      forecastday: [],
+    },
+  });
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
 
@@ -27,7 +49,29 @@ const Home = () => {
         setError("");
       } catch (error) {
         setError("City not found");
-        setData({});
+        const [data, setData] = useState({
+          current: {
+            wind_kph: 0,
+            humidity: 0,
+            wind_dir: "",
+            pressure_mb: 0,
+            feelslike_c: 0,
+            vis_km: 0,
+            condition: {
+              icon: "",
+              text: "",
+            },
+            temp_c: 0,
+          },
+          location: {
+            name: "",
+            country: "",
+            localtime_epoch: 0,
+          },
+          forecast: {
+            forecastday: [],
+          },
+        });
       }
     }
   };
