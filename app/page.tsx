@@ -7,30 +7,8 @@ import WeekForecast from "./components/WeekForecast";
 import WeatherDetails from "./components/WeatherDetails";
 
 const Home = () => {
-  const apiKey = process.env.WEATHER_API_KEY!;
-  const [data, setData] = useState({
-    current: {
-      wind_kph: 0,
-      humidity: 0,
-      wind_dir: "",
-      pressure_mb: 0,
-      feelslike_c: 0,
-      vis_km: 0,
-      condition: {
-        icon: "",
-        text: "",
-      },
-      temp_c: 0,
-    },
-    location: {
-      name: "",
-      country: "",
-      localtime_epoch: 0,
-    },
-    forecast: {
-      forecastday: [],
-    },
-  });
+  const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY!;
+  const [data, setData] = useState({});
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
 
@@ -49,29 +27,7 @@ const Home = () => {
         setError("");
       } catch (error) {
         setError("City not found");
-        const [data, setData] = useState({
-          current: {
-            wind_kph: 0,
-            humidity: 0,
-            wind_dir: "",
-            pressure_mb: 0,
-            feelslike_c: 0,
-            vis_km: 0,
-            condition: {
-              icon: "",
-              text: "",
-            },
-            temp_c: 0,
-          },
-          location: {
-            name: "",
-            country: "",
-            localtime_epoch: 0,
-          },
-          forecast: {
-            forecastday: [],
-          },
-        });
+        setData({});
       }
     }
   };
@@ -95,7 +51,7 @@ const Home = () => {
     </div>
   );
 
-  const renderWeatherContent = () => (
+  const renderWeatherContent = ({ data }: { data: any }) => (
     <>
       <div className="flex md:flex-row flex-col p-12 items-center justify-between">
         <Current data={data} />
@@ -113,7 +69,7 @@ const Home = () => {
   } else if (error !== "") {
     content = renderErrorContent();
   } else {
-    content = renderWeatherContent();
+    content = renderWeatherContent({ data });
   }
 
   const backgroundImageUrl =

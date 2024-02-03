@@ -73,9 +73,9 @@ The **Skycast** Weather App currently has the following `TypeScript` errors that
 
 1. ***Error***: `Type '{}' is missing the following properties from type '{ current: { condition: { icon: string; text: string; }; temp_c: number; }; location: { name: string; country: string; }; }': current, location`
 
-    - Location: /app/page.tsx, Line: 57
-    - Related Information: See /app/components/Current.tsx, Line: 7
-    - Description: The Home component is missing the required properties current and - location that are expected in the Current component.
+    - Location: `/app/page.tsx`, Line: 57
+    - Related Information: See `/app/components/Current.tsx`, Line: 7
+    - Description: The `Home` component is missing the required properties current and - location that are expected in the `Current` component.
 
 2. ***Error***: `Property 'forecast' is missing in type '{}' but required in type '{ forecast: { forecastday: DayForecast[]; }; }'.`
 
